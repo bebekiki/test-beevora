@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 30 Décembre 2020 à 16:09
+-- Généré le :  Mer 30 Décembre 2020 à 17:42
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `parking` (
   `numPlace` int(10) unsigned NOT NULL,
   `etage` int(10) unsigned NOT NULL,
   `disponibilite` int(11) NOT NULL,
-  `tempsOccupation` time NOT NULL,
+  `tempsOccupation` time DEFAULT NULL,
   `user` int(11) DEFAULT NULL,
   PRIMARY KEY (`numPlace`),
   KEY `user` (`user`)
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(250) CHARACTER SET latin1 NOT NULL,
   `email` varchar(250) CHARACTER SET latin1 NOT NULL,
   `password` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `rôle` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `rôle`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
 (2, 'patriciaa', 'patriciamenekeu4@yahoo.fr', '$2a$10$l9ttVjojYrD2ZC8Dmat/gOTIEHhN4QD2aiN6BNTsr8vvrOro5gO66', 'admin'),
 (3, 'pat', 'patriciamenekeu2@yahoo.fr', '$2a$10$Qg41ABCQXVWP7c5AgA7tR.ItdmSLew66ENP5c3aalU1Y9p7oLoF/i', ''),
 (5, 'linda', 'linda@gmail.com', '$2a$10$qiDkXqh/GaUFzDRH7JAYoejgTeH/zqARH9ei0zepw/.XqJep6n2jm', 'public');

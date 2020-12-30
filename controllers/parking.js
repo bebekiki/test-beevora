@@ -11,7 +11,11 @@ const db = mysql.createConnection({
 db.connect();
 
 exports.create = function(req,res){
-    const {numPlace, etage, disponibilite, tempsOccupation} = req.body;
+    const numPlace = req.body.numPlace;
+    const etage = req.body.etage;
+    const disponibilite = req.body.disponibilite;
+    const tempsOccupation = req.body.tempsOccupation
+   
     db.query('INSERT INTO parking(numPlace, etage, disponibilite, tempsOccupation) VALUES(?,?,?,?)',[numPlace,etage,disponibilite,tempsOccupation],(err,results)=>{
         if(err){
             return res.json({

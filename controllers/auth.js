@@ -13,7 +13,10 @@ db.connect();
 
 exports.register = function(req,res){
 
-    const {name,email,password,rôle} = req.body;
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const role = req.body.role
     
     db.query('SELECT email FROM users WHERE email = ?', [email], async (error,result) => {
       
@@ -32,7 +35,7 @@ exports.register = function(req,res){
         else{
             
             let cryptPassword = await bycrypt.hash(password,10);
-            db.query('INSERT INTO users(name,email,password,rôle) VALUES(?,?,?,?)',[name,email,cryptPassword,rôle],(err,results)=>{
+            db.query('INSERT INTO users(name,email,password,role) VALUES(?,?,?,?)',[name,email,cryptPassword,role],(err,results)=>{
                 return res.json({
                     "error":false,
                     "message": "Utilisateur cré avec succès !!!"
@@ -43,7 +46,8 @@ exports.register = function(req,res){
 }
 
 exports.login = function(req,res){
-    const {email, password} = req.body;
+    const email = req.body.email;
+    const password = req.body.password;
     
     db.query('SELECT * FROM users where email = ?',[email], async (err,results) =>{
         
