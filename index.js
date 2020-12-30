@@ -5,10 +5,10 @@ const dotenv = require('dotenv');
 
 const app = express();
 
-//configurer le fichier pr les infos sensibles
+//configurer le fichier pourr les infos sensibles
 dotenv.config({path:'./config.env'});
 
-//authoriser le passage de données via un formulaire 
+//authoriser le passage de données 
 app.use(express.urlencoded({extended:true}));
 
 //Middleware

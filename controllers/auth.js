@@ -11,7 +11,6 @@ const db = mysql.createConnection({
 //connexion à la BD
 db.connect();
 
-//exports permet q la fonction puisse être accessible dans d'autres pages
 exports.register = function(req,res){
 
     const {name,email,password,rôle} = req.body;

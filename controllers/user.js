@@ -32,7 +32,6 @@ exports.update = async function(req,res){
     const email = req.body.email;
     const password = req.body.password;
     const user_id = req.body.id;
-    // console.log(name);
 
     if(name == null){
         
